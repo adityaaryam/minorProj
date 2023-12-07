@@ -1,8 +1,8 @@
 import pandas as pd
 import numpy as np
-from PIL import Image, ImageOps
-import matplotlib.pyplot as plt
-import random
+# from PIL import Image, ImageOps
+# import matplotlib.pyplot as plt
+# import random
 # # data = pd.read_fwf(r"C:\Users\ayush\Desktop\minor project\VisDrone_Dataset\VisDrone2019-DET-train\VisDrone2019-DET-train\labels\0000084_02139_d_0000007.txt")
  
  

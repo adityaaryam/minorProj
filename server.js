@@ -37,11 +37,11 @@ app.get("/",function(req,res){
 
 app.post("/process",function(req,res){
   
-  let temp=req.file.buffer;
-  temp=Buffer.from(temp);
-  fs.writeFile("./0000085_00001_d_0000008.jpg",temp,(err)=>{
-        if(err)console.log(err);
-  })
+  // let temp=req.file.buffer;
+  // temp=Buffer.from(temp);
+  // fs.writeFile("./0000085_00001_d_0000008.jpg",temp,(err)=>{
+  //       if(err)console.log(err);
+  // })
   PythonShell.run('crowdDetectionScript.py', null).then(messages=>{
 
     // let dataRet={

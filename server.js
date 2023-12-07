@@ -50,6 +50,10 @@ function runScript(){
 // subprocess.on('close', () => {
 //   console.log("Closed");
 // });
+app.get("/",function(req,res){
+  res.send("Hello");
+})
+
 app.post("/process",function(req,res){
 
   const child = runScript("foobar")

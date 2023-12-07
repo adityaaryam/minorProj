@@ -57,6 +57,12 @@ app.post("/process",function(req,res){
   child.stdout.on('data', (data) => {
     res.send(data);
   });
+  child.stderr.on('data', (data) => {
+    res.send(data);
+  });
+  child.stderr.on('close', () => {
+    res.send(data);
+  });
   
   
 })

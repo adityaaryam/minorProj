@@ -28,8 +28,8 @@ const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 
 
-const server = app.listen(80, () =>
-  console.log(`Server started on 80}`)
+const server = app.listen(3000, () =>
+  console.log(`Server started on 3000`)
 );
 
 function runScript(){

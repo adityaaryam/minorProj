@@ -2,7 +2,6 @@ const express = require("express");
 const cors = require("cors");
 const app = express();
 const socket = require("socket.io");
-const sharp=require('sharp');
 const multer = require('multer');
 var fs=require('fs');
 const FormData = require('form-data');

@@ -2,11 +2,10 @@ const express = require("express");
 const cors = require("cors");
 const app = express();
 const socket = require("socket.io");
+const sharp=require('sharp');
 const multer = require('multer');
 var fs=require('fs');
 const FormData = require('form-data');
-const path = require('path')
-const {spawn} = require('child_process')
 
 
 app.use(cors());
@@ -28,40 +27,28 @@ const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 
 
-const server = app.listen(3000, () =>
-  console.log(`Server started on 3000`)
+const server = app.listen(process.env.PORT || 3000, () =>
+  console.log(`Server started on ${process.env.PORT!=undefined? process.env.PORT: 5000}`)
 );
 
-function runScript(){
-  return spawn('python', [
-    "-u", 
-    path.join(__dirname, 'crowdDetectionScript.py'),
-    "--foo", "some value for foo",
-  ]);
-}
-
-// const ans=runScript();
-// subprocess.stdout.on('data', (data) => {
-//   console.log(`data:${data}`);
-// });
-// subprocess.stderr.on('data', (data) => {
-//   console.log(`error:${data}`);
-// });
-// subprocess.on('close', () => {
-//   console.log("Closed");
-// });
 app.get("/",function(req,res){
   res.send("Hello");
 })
 
 app.post("/process",function(req,res){
+  
+  let temp=req.file.buffer;
+  temp=Buffer.from(temp);
+  fs.writeFile("./0000085_00001_d_0000008.jpg",temp,(err)=>{
+        if(err)console.log(err);
+  })
+  PythonShell.run('crowdDetectionScript.py', null).then(messages=>{
 
-  const child = runScript("foobar")
-  child.stdout.on('data', (data) => {
-    res.send(data);
-  });
-  child.stderr.on('data', (data) => {
-    res.send(data);
+    // let dataRet={
+    //   msg:messages[0],
+    //   imgData:fs.readFileSync('./result.jpg')
+    // }
+    res.send(messages)
   });
 
   

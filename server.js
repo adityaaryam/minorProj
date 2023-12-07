@@ -28,8 +28,8 @@ const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 
 
-const server = app.listen(process.env.PORT || 5000, () =>
-  console.log(`Server started on ${process.env.PORT!=undefined? process.env.PORT: 5000}`)
+const server = app.listen(5000, () =>
+  console.log(`Server started on 5000}`)
 );
 
 function runScript(){

@@ -63,9 +63,7 @@ app.post("/process",function(req,res){
   child.stderr.on('data', (data) => {
     res.send(data);
   });
-  child.stderr.on('close', () => {
-    res.send('done');
-  });
+
   
   
 })
